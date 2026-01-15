@@ -2,10 +2,11 @@
 
 session_start();
 if (!isset($_SESSION['id_utilisateur'])) {
-    header('Location: ../login.php');
+    require __DIR__ . '/../login.php';
     exit();
 }
-require_once '../../Models/Vehicule.php';
+
+require_once __DIR__ . '/../../Models/Vehicule.php';
 // require_once '../../Models/Categorie.php';
 
 $vehicule = new Vehicule();
@@ -47,8 +48,8 @@ $vehicules = $vehicule->getAllVehiculeesDisp();
             </a>
 
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-300">
-                <a href="home.php" class="hover:text-blue-400 transition">Accueil</a>
-                <a href="vehicule.php" class="hover:text-blue-400 transition text-blue-400">Véhicules</a>
+                <a href="accueil" class="hover:text-blue-400 transition">Accueil</a>
+                <a href="vehicule" class="hover:text-blue-400 transition text-blue-400">Véhicules</a>
                 
             </div>
 
@@ -64,11 +65,11 @@ $vehicules = $vehicule->getAllVehiculeesDisp();
 
                 <div id="profileDropdownMenu" class="hidden absolute right-0 top-full mt-3 w-48 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl py-2 z-50">
                     
-                    <a href="reservation.php" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
+                    <a href="reservation" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
                         <i class="fa-solid fa-calendar-check text-blue-400"></i> Mes Réservations
                     </a>
                     <div class="border-t border-gray-700 my-1"></div>
-                    <a href="../../Controllers/logout.php" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
+                    <a href="logout" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
                     </a>
                 </div>
@@ -260,7 +261,7 @@ $vehicules = $vehicule->getAllVehiculeesDisp();
             </button>
         </div>
 
-        <form action="../../Controllers/reservationVehicule.php" method="POST" class="p-6 space-y-5">
+        <form action="reservationVehicule" method="POST" class="p-6 space-y-5">
             
             <input type="hidden" name="id_user" value="<?= $_SESSION['id_utilisateur'] ?>">
             <input type="hidden" name="id_vehicule" id="vehicule">

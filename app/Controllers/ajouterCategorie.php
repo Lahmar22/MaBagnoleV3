@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Models/Categorie.php';
+require_once __DIR__ . '/../Models/Categorie.php';
 
 class AjouterCategorie
 {

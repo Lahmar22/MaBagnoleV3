@@ -2,11 +2,11 @@
 
 session_start();
 if (!isset($_SESSION['id_utilisateur'])) {
-    header('Location: ../login.php');
+    require __DIR__ . '/../login.php';
     exit();
 }
 
-require_once '../../Models/Reservation.php';
+require_once __DIR__ . '/../../Models/Reservation.php';
 
 $reserve = new Reservation();
 $reservations = $reserve->getReservation($_SESSION['id_utilisateur']);
@@ -40,8 +40,8 @@ $reservations = $reserve->getReservation($_SESSION['id_utilisateur']);
             </div>
             </a>
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-300">
-                <a href="home.php" class="hover:text-blue-400 transition">Accueil</a>
-                <a href="vehicule.php" class="hover:text-blue-400 transition">Véhicules</a>
+                <a href="accueil" class="hover:text-blue-400 transition">Accueil</a>
+                <a href="vehicule" class="hover:text-blue-400 transition">Véhicules</a>
                 
             </div>
             <div class="relative flex items-center">
@@ -56,11 +56,11 @@ $reservations = $reserve->getReservation($_SESSION['id_utilisateur']);
 
                 <div id="profileDropdownMenu" class="hidden absolute right-0 top-full mt-3 w-48 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl py-2 z-50">
                     
-                    <a href="reservation.php" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
+                    <a href="reservation" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
                         <i class="fa-solid fa-calendar-check text-blue-400"></i> Mes Réservations
                     </a>
                     <div class="border-t border-gray-700 my-1"></div>
-                    <a href="../../Controllers/logout.php" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
+                    <a href="logout" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
                     </a>
                 </div>
@@ -75,7 +75,7 @@ $reservations = $reserve->getReservation($_SESSION['id_utilisateur']);
                 <p class="text-gray-400 text-sm">Gérez vos locations actuelles et consultez votre historique.</p>
             </div>
             <div class="mt-4 md:mt-0">
-                <a href="vehicule.php" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+                <a href="vehicule" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
                     <i class="fa-solid fa-plus"></i> Nouvelle Réservation
                 </a>
             </div>
@@ -117,7 +117,7 @@ $reservations = $reserve->getReservation($_SESSION['id_utilisateur']);
 
                         <div class="flex flex-row lg:flex-col gap-2 w-full lg:w-auto">
                             
-                            <form action="../../Controllers/anuulerReservation.php" method="POST">
+                            <form action="anuulerReservation" method="POST">
                                 <input type="hidden" name="id_Reservation" value="<?=$r->id_Reservation ?>">
                                 <button type="submit" class="flex-1 bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white px-4 py-3 rounded-xl text-xs font-bold transition">
                                     Annuler

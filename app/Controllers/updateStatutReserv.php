@@ -1,5 +1,6 @@
 <?php
-require_once '../Models/Reservation.php';
+
+require_once __DIR__ . '/../Models/Reservation.php';
 
 class UpdateStatutReserv
 {

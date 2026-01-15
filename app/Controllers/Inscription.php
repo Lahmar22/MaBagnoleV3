@@ -1,5 +1,6 @@
 <?php
-require_once '../Models/Utilisateur.php';
+
+require_once __DIR__ . '/../Models/Utilisateur.php';
 
 class Inscription
 {

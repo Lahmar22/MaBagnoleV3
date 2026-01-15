@@ -53,7 +53,7 @@
         </div>
 
         <div class="glass rounded-2xl p-8">
-            <form action="controlleLogin" method="POST" class="space-y-6">
+            <form action="home" method="POST" class="space-y-6">
                 
                 <div class="space-y-2">
                     <label for="email" class="text-sm font-medium text-gray-300 block ml-1">Adresse Email</label>

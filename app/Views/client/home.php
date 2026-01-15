@@ -1,15 +1,12 @@
 <?php
-// require_once '../../Models/Theme.php';
-require_once __DIR__ . '/../../Models/Theme.php';
+
 
 session_start();
 if (!isset($_SESSION['id_utilisateur'])) {
-    header('Location: ../login.php');
+    require __DIR__ . '/../login.php';
     exit();
 }
 
-$theme = new Theme();
-$themes = $theme->getAllTheme();
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +55,7 @@ $themes = $theme->getAllTheme();
 
             <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-300">
                 <a href="#accueil" class="hover:text-blue-400 transition text-blue-400">Accueil</a>
-                <a href="vehicule.php" class="hover:text-blue-400 transition">Véhicules</a>
+                <a href="vehicule" class="hover:text-blue-400 transition">Véhicules</a>
                 <a href="#features" class="hover:text-blue-400 transition">Services</a>
             </div>
 
@@ -74,11 +71,11 @@ $themes = $theme->getAllTheme();
 
                 <div id="profileDropdownMenu" class="hidden absolute right-0 top-full mt-3 w-48 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl py-2 z-50">
                     
-                    <a href="reservation.php" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
+                    <a href="reservation" class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition">
                         <i class="fa-solid fa-calendar-check text-blue-400"></i> Mes Réservations
                     </a>
                     <div class="border-t border-gray-700 my-1"></div>
-                    <a href="../../Controllers/logout.php" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
+                    <a href="logout" class="flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion
                     </a>
                 </div>
@@ -110,55 +107,7 @@ $themes = $theme->getAllTheme();
             </div>
         </div>
     </section>
-    <section id="themes" class="py-20 bg-gray-900">
-        
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-4xl font-bold mb-4">Thèmes</h2>
-                    <p class="text-gray-400">Choisissez le thème adapté à votre trajet</p>
-                </div>
-                    
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <?php foreach ($themes as $tm) { ?>
-                    <a href="articlePage.php?id=<?=$tm->idTheme?>" class="block">
-                        <div class="group bg-gray-900 rounded-2xl overflow-hidden shadow-lg 
-                                    hover:shadow-blue-900/40 transition-all duration-300 
-                                    hover:-translate-y-2 border border-gray-800">
-
-                            <!-- Image -->
-                            <div class="relative h-56 overflow-hidden">
-                                <img src="<?= $tm->imageTheme ?>" 
-                                    alt="<?= $tm->nomTheme ?>" 
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-
-                                <div class="absolute bottom-4 left-4 right-4">
-                                    <h3 class="text-xl font-bold text-white drop-shadow">
-                                        <?= $tm->nomTheme ?>
-                                    </h3>
-                                </div>
-                            </div>
-
-                            <!-- Content -->
-                            <div class="p-6">
-                                <p class="text-gray-400 text-sm leading-relaxed">
-                                    <?= $tm->description ?>
-                                </p>
-                            </div>
-
-                        </div>
-                    </a>
-                <?php } ?>
-
-            </div>
-        </div>
-
-        
-    </section>
+    
 
     <section id="vehicules" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
@@ -167,7 +116,7 @@ $themes = $theme->getAllTheme();
                     <h2 class="text-4xl font-bold mb-4">Notre Flotte </h2>
                     <p class="text-gray-400">Choisissez le véhicule adapté à votre trajet</p>
                 </div>
-                <a href="vehicule.php" class="text-blue-400 hover:text-blue-300 font-medium mt-4 md:mt-0 flex items-center gap-2 group">
+                <a href="vehicule" class="text-blue-400 hover:text-blue-300 font-medium mt-4 md:mt-0 flex items-center gap-2 group">
                     Voir tout les vehicules 
                     <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
                 </a>
@@ -188,6 +137,7 @@ $themes = $theme->getAllTheme();
                                 <p class="text-gray-400 text-sm">Design iconique & performance</p>
                             </div>
                         </div>
+                        
                         <div class="flex justify-between items-center py-4 border-t border-gray-700 mb-4">
                             <div class="flex flex-col items-center gap-1 text-gray-400">
                                 <i class="fa-solid fa-gauge-high"></i>

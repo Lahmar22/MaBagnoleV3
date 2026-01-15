@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Models/Reservation.php';
+require_once __DIR__ . '/../Models/Reservation.php';
 
 class ReservationVehicule
 {
@@ -26,7 +26,7 @@ class ReservationVehicule
             $clientResv->reservationVehicule($reservation);
 
 
-            header("Location: ../Views/client/vehicule.php?success=1");
+            require __DIR__ . '/../Views/client/vehicule.php';
             exit();
         } catch (PDOException $e) {
             echo "<pre>";

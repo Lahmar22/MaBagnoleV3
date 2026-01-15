@@ -1,5 +1,6 @@
 <?php
-require_once '../Models/Reservation.php';
+
+require_once __DIR__ . '/../Models/Reservation.php';
 
 class AnuulerReservation
 {
@@ -11,14 +12,15 @@ class AnuulerReservation
         }
         try {
             $id = $_POST["id_Reservation"];
-
+ 
             $reserve = new Reservation();
             $reserve->annulerReservation($id);
 
             header("Location: ../Views/client/reservation.php?success=1");
+            // require __DIR__ . '/../Views/client/home.php';
             exit();
         } catch (PDOException) {
-            header("Location: ../Views/client/reservation.php?error=db");
+            header("Location: /../Views/client/reservation.php?error=db");
             exit();
         }
     }

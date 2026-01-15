@@ -1,5 +1,6 @@
 <?php
-require_once '../Models/Vehicule.php';
+
+require_once __DIR__ . '/../Models/Vehicule.php';
 
 class SupprimerVehicule
 {
