@@ -11,6 +11,10 @@ if($path[2] === ''){
 
 }elseif($path[2] === 'inscription'){
     require 'app/Views/register.php';
+
+}elseif($path[2] === 'controlleLogin'){
+    require 'app/Controllers/ControllerLogin.php';
+
 }else{
     require 'app/Views/error.php';
 }
