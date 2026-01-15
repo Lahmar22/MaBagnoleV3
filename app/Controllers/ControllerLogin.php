@@ -1,13 +1,14 @@
 <?php
 session_start();
-require_once '../Models/Utilisateur.php';
+
+require_once __DIR__ . '/../Models/Utilisateur.php';
 
 class ControllerLogin
 {
     public function verifierLogin()
     {
         if (!isset($_POST['email'], $_POST['password'])) {
-            header('Location: ../Views/login.php?error=missing_fields');
+            header('Location: ../Views/login.php?error=empty_fields');
             exit();
         }
 
@@ -18,7 +19,7 @@ class ControllerLogin
         $user = $login->login($email);
 
         if (!$user) {
-            header('Location: ../Views/login.php?error=email_not_found');
+            header('Location: ../Views/login.php?error=user_not_found');
             exit();
         }
 
@@ -32,8 +33,8 @@ class ControllerLogin
         $_SESSION['nom'] = $user->nom;
         $_SESSION['prenom'] = $user->prenom;
 
-        header('Location: ../Views/client/home.php');
-
+        // header('Location: /../Views/client/home.php');
+        require __DIR__ . '/../Views/client/home.php';
         exit();
     }
 }
@@ -41,4 +42,4 @@ class ControllerLogin
 $controller = new ControllerLogin();
 $controller->verifierLogin();
 
-?>
+
