@@ -53,7 +53,7 @@
         </div>
 
         <div class="glass rounded-2xl p-8">
-            <form action="../Controllers/ControllerLogin.php" method="POST" class="space-y-6">
+            <form action="controlleLogin" method="POST" class="space-y-6">
                 
                 <div class="space-y-2">
                     <label for="email" class="text-sm font-medium text-gray-300 block ml-1">Adresse Email</label>
@@ -97,7 +97,7 @@
 
         <p class="text-center mt-6 text-gray-400 text-sm">
             Vous n'avez pas de compte ? 
-            <a href="register.php" class="text-blue-400 hover:text-blue-300 font-semibold hover:underline transition">Inscrivez-vous ici</a>
+            <a href="inscription" class="text-blue-400 hover:text-blue-300 font-semibold hover:underline transition">Inscrivez-vous ici</a>
         </p>
     </div>
 

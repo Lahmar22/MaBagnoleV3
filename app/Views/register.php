@@ -117,7 +117,7 @@
 
         <p class="text-center mt-6 text-gray-400 text-sm">
             Vous avez déjà un compte ? 
-            <a href="login.php" class="text-blue-400 hover:text-blue-300 font-semibold hover:underline transition">Connectez-vous</a>
+            <a href="login" class="text-blue-400 hover:text-blue-300 font-semibold hover:underline transition">Connectez-vous</a>
         </p>
     </div>
 

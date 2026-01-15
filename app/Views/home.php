@@ -48,12 +48,12 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <a href="Views/login.php">
+                    <a href="login">
                         <button class="hidden md:block text-gray-300 hover:text-white transition font-medium">
                             Connexion
                         </button>
                     </a>
-                    <a href="Views/register.php">
+                    <a href="inscription">
                         <button class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-0.5 font-medium">
                             Inscription
                         </button>
