@@ -1,5 +1,6 @@
 <?php
-require_once '../../Models/Theme.php';
+// require_once '../../Models/Theme.php';
+require_once __DIR__ . '/../../Models/Theme.php';
 
 session_start();
 if (!isset($_SESSION['id_utilisateur'])) {
