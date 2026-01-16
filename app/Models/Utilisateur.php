@@ -47,13 +47,25 @@ class Utilisateur{
 
         $db = Connection::connect();
 
-        $sqlUser = "SELECT * FROM utilisateur WHERE email = :email";
+        $sqlUser = "SELECT *, 'client' as roleUser FROM utilisateur WHERE email = :email";
+        
 
         $stmt = $db->prepare($sqlUser);
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-        return $user;
+        if($user){
+            return $user;
+        }
+
+        $sqladmin = "SELECT *, 'admin' as roleUser FROM administrator WHERE email = :email";
+
+        $stmt2 = $db->prepare($sqladmin);
+        $stmt2->execute(['email' => $email]);
+        $admin = $stmt2->fetch(PDO::FETCH_OBJ);
+
+        return $admin;
+
 
     }
 
