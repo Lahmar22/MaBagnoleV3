@@ -1,6 +1,14 @@
 <?php
-require_once '../../Models/Vehicule.php';
-require_once '../../Models/Categorie.php';
+
+session_start();
+if (!isset($_SESSION['id_admin'])) {
+    require __DIR__ . '/../login.php';
+    exit();
+}
+
+require_once __DIR__ . '/../../Models/Vehicule.php';
+require_once __DIR__ . '/../../Models/Categorie.php';
+
 
 $vehicule = new Vehicule();
 $vehicules = $vehicule->getAllVehiculees();
@@ -42,7 +50,7 @@ $categories = $categorie->getAllCategorie();
                 <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
                     <i class="fa-solid fa-car-side"></i> Gestion Flotte
                 </a>
-                <a href="reservation.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
+                <a href="reservationAdmin" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
                     <i class="fa-solid fa-calendar-check"></i> Réservations
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
@@ -54,7 +62,7 @@ $categories = $categorie->getAllCategorie();
             </nav>
         </div>
         <div class="mt-auto p-6 border-t border-gray-800">
-            <a href="../../Controllers/logout.php" class="flex items-center gap-3 text-red-400 hover:text-red-300 transition">
+            <a href="logout" class="flex items-center gap-3 text-red-400 hover:text-red-300 transition">
                 <i class="fa-solid fa-power-off"></i> Déconnexion
             </a>
         </div>
@@ -166,7 +174,7 @@ $categories = $categorie->getAllCategorie();
                                             class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white transition-all shadow-sm">
                                             <i class="fa-solid fa-pen-to-square text-xs"></i>
                                         </button>
-                                        <form action="../../Controllers/supprimerVehicule.php" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet Vehicule ?');">
+                                        <form action="supprimerVehicule" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet Vehicule ?');">
                                             <input type="hidden" name="id_Vehicule" value="<?= $v->id_Vehicule ?>">
                                             <button type="submit" title="Supprimer" class="w-8 h-8 flex items-center justify-center rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-all shadow-sm">
                                                 <i class="fa-solid fa-trash text-xs"></i>
@@ -189,7 +197,7 @@ $categories = $categorie->getAllCategorie();
                 <button onclick="toggleModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             
-            <form action="../../Controllers/ajouterVehicule.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action="ajouterVehicule" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-2">
                     <label class="text-sm text-gray-400">Nom du modèle</label>
                     <input type="text" name="modele" placeholder="Ex: Mercedes AMG" class="w-full bg-gray-800 border border-gray-700 rounded-xl p-3 text-sm outline-none focus:ring-2 focus:ring-blue-500">
@@ -235,7 +243,7 @@ $categories = $categorie->getAllCategorie();
                 <button onclick="toggleModalupdate(this)" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             
-            <form action="../../Controllers/modifierVehicule.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action="modifierVehicule" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="hidden" id="id_vehicule" name="id_vehicule">
                 <div class="space-y-2">
                     <label class="text-sm text-gray-400">Nom du modèle</label>
@@ -281,7 +289,7 @@ $categories = $categorie->getAllCategorie();
                 <button onclick="toggleModalCatg()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             
-            <form action="../../Controllers/ajouterCategorie.php" method="POST" class="flex flex-col gap-6">
+            <form action="ajouterCategorie" method="POST" class="flex flex-col gap-6">
                 <div class="space-y-2">
                     <label class="text-sm text-gray-400 font-medium ml-1">Nom de la Catégorie</label>
                     <div class="relative">

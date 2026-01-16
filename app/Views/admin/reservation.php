@@ -1,5 +1,12 @@
 <?php
-require_once '../../Models/Reservation.php';
+
+session_start();
+if (!isset($_SESSION['id_admin'])) {
+    require __DIR__ . '/../login.php';
+    exit();
+}
+
+require_once __DIR__ . '/../../Models/Reservation.php';
 
 $reserve = new Reservation();
 $reservations = $reserve->getAllReservation();
@@ -33,7 +40,7 @@ $reservations = $reserve->getAllReservation();
 
             <nav class="space-y-2">
                 
-                <a href="home.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
+                <a href="homeAdmin" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
                     <i class="fa-solid fa-car-side"></i> Gestion Flotte
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-gray-800 hover:text-white transition">
@@ -48,7 +55,7 @@ $reservations = $reserve->getAllReservation();
             </nav>
         </div>
         <div class="mt-auto p-6 border-t border-gray-800">
-            <a href="../../Controllers/logout.php" class="flex items-center gap-3 text-red-400 hover:text-red-300 transition">
+            <a href="logout" class="flex items-center gap-3 text-red-400 hover:text-red-300 transition">
                 <i class="fa-solid fa-power-off"></i> Déconnexion
             </a>
         </div>
@@ -145,7 +152,7 @@ $reservations = $reserve->getAllReservation();
                                 </td>
 
                                 <td class="px-6 py-4 text-right">
-                                    <form action="../../Controllers/updateStatutReserv.php" method="POST"
+                                    <form action="updateStatutReserv" method="POST"
                                         class="flex justify-end items-center gap-3">
                                         <input type="hidden" name="id_reseve" value="<?= $r->id_Reservation ?>">
 
