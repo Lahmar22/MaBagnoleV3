@@ -26,7 +26,7 @@ class ReservationVehicule
             $clientResv->reservationVehicule($reservation);
 
 
-            require __DIR__ . '/../Views/client/vehicule.php';
+            header("Location: accueil");
             exit();
         } catch (PDOException $e) {
             echo "<pre>";

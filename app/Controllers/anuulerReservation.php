@@ -16,11 +16,11 @@ class AnuulerReservation
             $reserve = new Reservation();
             $reserve->annulerReservation($id);
 
-            header("Location: ../Views/client/reservation.php?success=1");
-            // require __DIR__ . '/../Views/client/home.php';
+            header("Location: reservation");
+
             exit();
         } catch (PDOException) {
-            header("Location: /../Views/client/reservation.php?error=db");
+            header("Location: reservation");
             exit();
         }
     }

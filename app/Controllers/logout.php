@@ -11,7 +11,7 @@ class Logout
 
         session_destroy();
 
-       require __DIR__ . '/../Views/login.php';
+       header('Location: login');
         exit();
     }
 }

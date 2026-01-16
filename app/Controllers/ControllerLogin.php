@@ -28,18 +28,30 @@ class ControllerLogin
             exit();
         }
 
-        $_SESSION['id_utilisateur'] = $user->id_utilisateur;
-        $_SESSION['email'] = $user->email;
-        $_SESSION['nom'] = $user->nom;
-        $_SESSION['prenom'] = $user->prenom;
+        switch ($user->roleUser) {
+            case 'client':
+                $_SESSION['id_utilisateur'] = $user->id_utilisateur;
+                $_SESSION['email'] = $user->email;
+                $_SESSION['nom'] = $user->nom;
+                $_SESSION['prenom'] = $user->prenom;
 
-        // header('Location: /../Views/client/home.php');
-        require __DIR__ . '/../Views/client/home.php';
+                header("Location: accueil");
+                break;
+            case 'admin':
+                $_SESSION['id_admin'] = $user->id_admin;
+                $_SESSION['emailAdmin'] = $user->email;
+                $_SESSION['nomAdmin'] = $user->nom;
+                $_SESSION['prenomAdmin'] = $user->prenom;
+
+                header("Location: homeAdmin");
+                break;
+            
+        }
+
+        
         exit();
     }
 }
 
 $controller = new ControllerLogin();
 $controller->verifierLogin();
-
-

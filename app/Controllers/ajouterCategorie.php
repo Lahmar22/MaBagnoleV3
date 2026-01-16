@@ -24,7 +24,7 @@ class AjouterCategorie
             $adminCatg->ajouterCategorie($categorie);
 
 
-            header("Location: ../Views/admin/home.php?success=1");
+            header("Location: homeAdmin");
             exit();
         } catch (PDOException $e) {
             echo "<pre>";

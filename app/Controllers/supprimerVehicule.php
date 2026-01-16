@@ -16,10 +16,10 @@ class SupprimerVehicule
             $vehicule = new Vehicule();
             $vehicule->supprimerVehicule($id);
 
-            header("Location: ../Views/admin/home.php?success=1");
+            header("Location: homeAdmin");
             exit();
         } catch (PDOException) {
-            header("Location: ../Views/admin/home.php?error=db");
+            header("Location: homeAdmin");
             exit();
         }
     }

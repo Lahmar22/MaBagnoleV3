@@ -19,7 +19,7 @@ class Inscription
             $user = new Utilisateur();
             $user->inscription($nom, $prenom, $email, $hash);
 
-            header('Location: ../Views/login.php');
+            header('Location: login');
             exit();
         } catch (PDOException $e) {
             echo '<pre>';

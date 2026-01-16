@@ -25,7 +25,7 @@ class ModifierVehicule{
             $adminVecl->modifierVehicule($vehicule, $id_vehicule);
 
 
-            header("Location: ../Views/admin/home.php?success=1");
+            header("Location: homeAdmin");
             exit();
         } catch (PDOException $e) {
             echo "<pre>";

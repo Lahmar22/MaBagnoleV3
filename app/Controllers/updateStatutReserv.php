@@ -17,10 +17,10 @@ class UpdateStatutReserv
             $reserve = new Reservation();
             $reserve->modifierStatutResv($id, $statutsResv);
 
-            header("Location: ../Views/admin/reservation.php?success=1");
+            header("Location: reservationAdmin");
             exit();
         } catch (PDOException) {
-            header("Location: ../Views/admin/reservation.php?error=db");
+            header("Location: reservationAdmin");
             exit();
         }
     }
