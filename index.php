@@ -1,41 +1,34 @@
-<?php 
+<?php
+
+require_once __DIR__ . '/app/Controllers/controllePage.php';
+
 $url = $_SERVER['REQUEST_URI'];
+$path = explode('/', trim($url, '/'));
 
-$path = explode('/', $url);
+$route = $path[1];
 
-if($path[2] === ''){
-    require 'app/Views/home.php';   
+$routes = [
+    '' => 'app/Views/home.php',
+    'login' => 'app/Views/login.php',
+    'inscription' => 'app/Views/register.php',
+    'home' => 'app/Controllers/ControllerLogin.php',
+    'accueil' => 'app/Views/client/home.php',
+    'vehicule' => 'app/Views/client/vehicule.php',
+    'reservationVehicule' => 'app/Controllers/reservationVehicule.php',
+    'reservation' => 'app/Views/client/reservation.php',
+    'reservationAdmin' => 'app/Views/admin/reservation.php',
+    'homeAdmin' => 'app/Views/admin/home.php',
+    'updateStatutReserv' => 'app/Controllers/updateStatutReserv.php',
+    'ajouterVehicule' => 'app/Controllers/ajouterVehicule.php',
+    'ajouterCategorie' => 'app/Controllers/ajouterCategorie.php',
+    'modifierVehicule' => 'app/Controllers/modifierVehicule.php',
+    'supprimerVehicule' => 'app/Controllers/supprimerVehicule.php',
+    'anuulerReservation' => 'app/Controllers/anuulerReservation.php',
+    'logout' => 'app/Controllers/logout.php',
+];
 
-}elseif($path[2] === 'login'){
-    require 'app/Views/login.php';
-
-}elseif($path[2] === 'inscription'){
-    require 'app/Views/register.php';
-
-}elseif($path[2] === 'home'){
-    require 'app/Controllers/ControllerLogin.php';
-
-}elseif($path[2] === 'accueil'){
-    require 'app/Views/client/home.php';
-
-}elseif($path[2] === 'vehicule'){
-    require 'app/Views/client/vehicule.php';
-
-}elseif($path[2] === 'reservationVehicule'){
-    require 'app/Controllers/reservationVehicule.php';
-}
-elseif($path[2] === 'reservation'){
-    require 'app/Views/client/reservation.php';
-
-}
-elseif($path[2] === 'anuulerReservation'){
-    require 'app/Controllers/anuulerReservation.php';
-
-}
-elseif($path[2] === 'logout'){
-    require 'app/Controllers/logout.php';
-
-}
-else{
+if (array_key_exists($route, $routes)) {
+    routerPage($routes[$route]) ;
+} else {
     require 'app/Views/error.php';
 }
